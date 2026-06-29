@@ -1,0 +1,39 @@
+.section {
+  padding: 28px 24px 72px;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+
+  display: grid;
+  gap: 16px;
+}
+
+.label {
+  margin: 0;
+  color: var(--accent-2);
+  font-size: 0.95rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.title {
+  margin: 0;
+  font-size: clamp(1.8rem, 4vw, 3rem);
+  letter-spacing: -0.04em;
+}
+
+.content {
+  display: grid;
+  gap: 16px;
+  max-width: 760px;
+  color: var(--muted);
+  line-height: 1.8;
+  font-size: 1.03rem;
+}
+
+.content p {
+  margin: 0;
+}
