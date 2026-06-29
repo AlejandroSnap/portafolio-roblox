@@ -1,3 +1,3 @@
-:HL["/_next/static/chunks/0fwqg4-aqk4rd.css","style"]
-:HL["/_next/static/chunks/0zlgfybwhjlpy.css","style"]
-0:{"tree":{"name":"","param":null,"prefetchHints":16,"slots":{"children":{"name":"work","param":null,"prefetchHints":0,"slots":{"children":{"name":"slug","param":{"type":"d","key":"bridge-race-teams","siblings":null},"prefetchHints":0,"slots":{"children":{"name":"__PAGE__","param":null,"prefetchHints":0,"slots":null}}}}}}},"staleTime":300,"buildId":"haUNq4G2Xgk6sYS_LekCD"}
+:HL["/portafolio-roblox/_next/static/chunks/0fwqg4-aqk4rd.css","style"]
+:HL["/portafolio-roblox/_next/static/chunks/0zlgfybwhjlpy.css","style"]
+0:{"tree":{"name":"","param":null,"prefetchHints":16,"slots":{"children":{"name":"work","param":null,"prefetchHints":0,"slots":{"children":{"name":"slug","param":{"type":"d","key":"bridge-race-teams","siblings":null},"prefetchHints":0,"slots":{"children":{"name":"__PAGE__","param":null,"prefetchHints":0,"slots":null}}}}}}},"staleTime":300,"buildId":"lq6zzgsZaycRWQsBuEXJ0"}

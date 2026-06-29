@@ -1,4 +1,4 @@
-:HL["/_next/static/chunks/0fwqg4-aqk4rd.css","style"]
-:HL["/_next/static/chunks/2_ep31x9nvnm7.css","style"]
-:HL["/img/work/quests-system.png","image"]
-0:{"tree":{"name":"","param":null,"prefetchHints":16,"slots":{"children":{"name":"__PAGE__","param":null,"prefetchHints":0,"slots":null}}},"staleTime":300,"buildId":"haUNq4G2Xgk6sYS_LekCD"}
+:HL["/portafolio-roblox/_next/static/chunks/0fwqg4-aqk4rd.css","style"]
+:HL["/portafolio-roblox/_next/static/chunks/2_ep31x9nvnm7.css","style"]
+:HL["/portafolio-roblox/img/work/quests-system.png","image"]
+0:{"tree":{"name":"","param":null,"prefetchHints":16,"slots":{"children":{"name":"__PAGE__","param":null,"prefetchHints":0,"slots":null}}},"staleTime":300,"buildId":"lq6zzgsZaycRWQsBuEXJ0"}
