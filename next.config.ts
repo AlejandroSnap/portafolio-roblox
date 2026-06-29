@@ -6,6 +6,9 @@ const nextConfig: NextConfig = {
   trailingSlash: true,
   basePath: SITE_BASE_PATH,
   assetPrefix: SITE_BASE_PATH,
+  images: {
+    unoptimized: true,
+  },
 };
 
 export default nextConfig;
