@@ -3,6 +3,7 @@ import Link from "next/link";
 import { work, workKindLabels } from "@/data/work";
 import styles from "./workDetail.module.css";
 import MediaBlock from "./MediaBlock";
+import { SITE_BASE_PATH } from "@/lib/constants";
 
 export function generateStaticParams() {
   return work.map((item) => ({ slug: item.slug }));
@@ -19,7 +20,7 @@ export default async function WorkDetailPage({ params }: Props) {
   return (
     <section className={styles.section}>
       <div className={styles.container}>
-        <Link href="/#work" className={styles.back}>
+        <Link href={`${SITE_BASE_PATH}/#work`} className={styles.back}>
           ← Back to work
         </Link>
 

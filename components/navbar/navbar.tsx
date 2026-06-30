@@ -1,14 +1,14 @@
 import Link from "next/link";
 import styles from "./navbar.module.css";
 import { navItems } from "@/data/navigation";
-import { SITE_NAME } from "@/lib/constants";
+import { SITE_BASE_PATH, SITE_NAME } from "@/lib/constants";
 
 export default function Navbar() {
   return (
     <header className={styles.header}>
       <nav className={styles.navbar}>
         <div className={styles.container}>
-          <Link href="/#home" className={styles.brand}>
+          <Link href={`${SITE_BASE_PATH}/#home`} className={styles.brand}>
             {SITE_NAME}
           </Link>
 
