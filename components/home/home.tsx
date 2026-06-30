@@ -1,5 +1,5 @@
 import styles from "./home.module.css";
-import { SITE_TAGLINE } from "@/lib/constants";
+import { SITE_BASE_PATH, SITE_TAGLINE } from "@/lib/constants";
 
 const stack = ["Lua", "Roblox Studio", "Next.js", "TypeScript"];
 
@@ -21,10 +21,10 @@ export default function Home() {
           </p>
 
           <div className={styles.actions}>
-            <a href="/#work" className={styles.primaryButton}>
+            <a href={`${SITE_BASE_PATH}/#work`} className={styles.primaryButton}>
               See my work
             </a>
-            <a href="/#contact" className={styles.secondaryButton}>
+            <a href={`${SITE_BASE_PATH}/#contact`} className={styles.secondaryButton}>
               Get in touch
             </a>
           </div>
@@ -38,7 +38,7 @@ export default function Home() {
           </div>
         </div>
 
-        <div className={styles.panel}>
+        {/* <div className={styles.panel}>
           <div className={styles.panelGlow} aria-hidden="true" />
           <p className={styles.panelLabel}>Currently building</p>
           <p className={styles.panelTitle}>Bridge Race Teams</p>
@@ -56,7 +56,7 @@ export default function Home() {
               <span className={styles.statLabel}>Learning web dev</span>
             </div>
           </div>
-        </div>
+        </div> */}
       </div>
     </section>
   );
