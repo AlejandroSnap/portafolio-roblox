@@ -8,15 +8,14 @@ export default function Navbar() {
     <header className={styles.header}>
       <nav className={styles.navbar}>
         <div className={styles.container}>
-          <Link href={`/#home`} className={styles.brand}>
+          <a href={`${SITE_BASE_PATH}/#home`} className={styles.brand}>
             {SITE_NAME}
-          </Link>
-
+          </a>
           <div className={styles.links}>
             {navItems.map((item) => (
-              <Link key={item.title} href={item.href} className={styles.link}>
+              <a key={item.title} href={item.href} className={styles.link}>
                 {item.title}
-              </Link>
+              </a>
             ))}
           </div>
         </div>
