@@ -9,14 +9,12 @@ export default function About() {
 
         <div className={styles.content}>
           <p>
-            I like building games with clear systems, a progression that
-            feels rewarding, and an experience that feels alive. On Roblox, I
-            focus a lot on gameplay, economy, and UI.
-          </p>
-
-          <p>
-            I&apos;m also learning web development with Next.js to build
-            pages, portfolios, and tools that support my bigger projects.
+            I develop complete Roblox experiences across a wide range of genres,
+            including simulators, puzzle games, obbies, platformers, and custom concepts.
+            I specialize in building scalable gameplay systems, intuitive UI, and
+            maintainable codebases using modular and object-oriented programming. I also
+            work on custom systems, bug fixing, optimization, and expanding existing
+            projects with new features.
           </p>
         </div>
       </div>

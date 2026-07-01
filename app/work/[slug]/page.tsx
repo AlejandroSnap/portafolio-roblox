@@ -20,7 +20,7 @@ export default async function WorkDetailPage({ params }: Props) {
   return (
     <section className={styles.section}>
       <div className={styles.container}>
-        <Link href={`${SITE_BASE_PATH}/#work`} className={styles.back}>
+        <Link href={`/#work`} className={styles.back}>
           ← Back to work
         </Link>
 

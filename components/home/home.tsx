@@ -1,7 +1,16 @@
 import styles from "./home.module.css";
 import { SITE_BASE_PATH, SITE_TAGLINE } from "@/lib/constants";
 
-const stack = ["Lua", "Roblox Studio", "Next.js", "TypeScript"];
+const stack = [
+  "Luau",
+  "Roblox Studio",
+  "OOP",
+  "Modular",
+  "UI",
+  "Gameplay",
+  "DataStore",
+  "Optimization",
+];
 
 export default function Home() {
   return (
@@ -15,9 +24,7 @@ export default function Home() {
           </h1>
 
           <p className={styles.description}>
-            I&apos;m AlejandroSnap. I design gameplay, UI, and economy systems
-            for Roblox, and I&apos;m branching into web development to build
-            the tools and pages that go around them.
+            I&apos;m AlejandroSnap, a Roblox developer with 5 years of experience. I develop complete Roblox experiences, from gameplay systems and UI to optimization, bug fixing, and custom features.
           </p>
 
           <div className={styles.actions}>

@@ -1,8 +1,8 @@
 import styles from "./contact.module.css";
 import { socials } from "@/data/socials";
+import { DISCORD_USERNAME } from "@/lib/constants";
+import DiscordButton from "./discordButton";
 
-// To add or remove a contact option, just edit the `socials` array
-// in data/socials.ts — this section renders automatically from it.
 export default function Contact() {
   return (
     <section id="contact" className={styles.section}>
@@ -27,6 +27,8 @@ export default function Contact() {
               {social.name}
             </a>
           ))}
+
+          <DiscordButton username={DISCORD_USERNAME} />
         </div>
       </div>
     </section>

@@ -8,7 +8,7 @@ export default function Navbar() {
     <header className={styles.header}>
       <nav className={styles.navbar}>
         <div className={styles.container}>
-          <Link href={`${SITE_BASE_PATH}/#home`} className={styles.brand}>
+          <Link href={`/#home`} className={styles.brand}>
             {SITE_NAME}
           </Link>
 

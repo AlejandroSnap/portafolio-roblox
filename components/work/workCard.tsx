@@ -9,7 +9,7 @@ type Props = { item: WorkItem };
 export default function WorkCard({ item }: Props) {
   return (
     <Link
-      href={`${SITE_BASE_PATH}/work/${item.slug}/`}
+      href={`/work/${item.slug}/`}
       className={styles.card}
     >
       {/* Thumbnail */}

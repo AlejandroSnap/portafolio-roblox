@@ -6,25 +6,18 @@ export type ExperienceItem = {
 };
 
 export const experienceItems: ExperienceItem[] = [
-  {
-    title: "Roblox Game Development",
-    organization: "Personal Projects",
-    period: "2024 - Present",
-    description:
-      "Building gameplay systems, UI, and economy design for Roblox experiences.",
-  },
-  {
-    title: "Frontend Practice",
-    organization: "Next.js / React",
-    period: "2025 - Present",
-    description:
-      "Learning React, Next.js, TypeScript, CSS Modules, and responsive design.",
-  },
-  {
-    title: "Systems & UI Design",
-    organization: "Portfolio & Tools",
-    period: "Ongoing",
-    description:
-      "Designing clean interfaces, reusable structures, and maintainable components.",
-  },
+ {
+  title: "Roblox Game Development",
+  organization: "Full Game Development",
+  period: "",
+  description:
+    "Developing complete Roblox games across multiple genres, including simulators, puzzle games, obbies, platformers, and other custom experiences from concept to release.",
+},
+{
+  title: "Custom Systems & Architecture",
+  organization: "Programming & Technical Design",
+  period: "",
+  description:
+    "Building custom gameplay systems, UI, data management, and reusable frameworks using modular and class-based programming. I also provide bug fixing, optimization, refactoring, and feature implementation for existing projects.",
+},
 ];
