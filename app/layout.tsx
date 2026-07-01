@@ -5,7 +5,7 @@ import { SITE_BASE_PATH, SITE_NAME } from "@/lib/constants";
 
 export const metadata: Metadata = {
   title: `${SITE_NAME} | Portfolio`,
-  description: "Personal portfolio of AlejandroSnap, built with Next.js.",
+  description: "Personal portfolio of AlejandroSnap",
   icons: {
     icon: [
       { url: `${SITE_BASE_PATH}/favicon.ico`, sizes: "any" },

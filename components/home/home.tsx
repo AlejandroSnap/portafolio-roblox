@@ -24,7 +24,7 @@ export default function Home() {
           </h1>
 
           <p className={styles.description}>
-            I&apos;m AlejandroSnap, a Roblox developer with 5 years of experience. I develop complete Roblox experiences, from gameplay systems and UI to optimization, bug fixing, and custom features.
+            I&apos;m AlejandroSnap, a full-stack Roblox developer with over 5 years of experience building complete Roblox experiences. I specialize in gameplay systems, UI, optimization, bug fixing, and custom feature development.
           </p>
 
           <div className={styles.actions}>
