@@ -49,7 +49,7 @@ export const workKindLabels: Record<WorkKind, string> = {
 export const work: WorkItem[] = [
   {
     slug: "obby-to-outdo-your-ex",
-    title: "Obby to outdo your ex",
+    title: "",
     kind: "project",
 
     description:
