@@ -1,11 +1,38 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import Navbar from "@/components/navbar/navbar";
-import { SITE_BASE_PATH, SITE_NAME } from "@/lib/constants";
+import Footer from "@/components/footer";
+import { SITE_BASE_PATH, SITE_NAME, SITE_ORIGIN } from "@/lib/constants";
+
+const description =
+  "Roblox games, custom gameplay systems, and intuitive interfaces by AlejandroSnap. Explore my work and let’s build your next experience.";
 
 export const metadata: Metadata = {
-  title: `${SITE_NAME} | Portfolio`,
-  description: "Personal portfolio of AlejandroSnap",
+  metadataBase: new URL(SITE_ORIGIN),
+  title: {
+    default: `${SITE_NAME} — Roblox Game Developer`,
+    template: `%s | ${SITE_NAME}`,
+  },
+  description,
+  openGraph: {
+    title: `${SITE_NAME} — Roblox Game Developer`,
+    description,
+    siteName: SITE_NAME,
+    type: "website",
+    locale: "en_US",
+    images: [
+      {
+        url: `${SITE_BASE_PATH}/img/work/step-risk-rng.webp`,
+        alt: "Step Risk RNG, a Roblox game by AlejandroSnap",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: `${SITE_NAME} — Roblox Game Developer`,
+    description,
+    images: [`${SITE_BASE_PATH}/img/work/step-risk-rng.webp`],
+  },
   icons: {
     icon: [
       { url: `${SITE_BASE_PATH}/favicon.ico`, sizes: "any" },
@@ -15,17 +42,22 @@ export const metadata: Metadata = {
   },
 };
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   return (
-    <html lang="en">
-      <head>
-        <link rel="icon" href={`${SITE_BASE_PATH}/favicon.ico`} sizes="any" />
-        <link rel="icon" href={`${SITE_BASE_PATH}/icon.svg`} type="image/svg+xml" />
-        <link rel="apple-touch-icon" href={`${SITE_BASE_PATH}/icon-192.png`} />
-      </head>
+    <html lang="en" data-scroll-behavior="smooth">
       <body>
+        <a href="#main-content" className="skip-link">
+          Skip to content
+        </a>
         <Navbar />
-        <main>{children}</main>
+        <main id="main-content" tabIndex={-1}>
+          {children}
+        </main>
+        <Footer />
       </body>
     </html>
   );

@@ -1,23 +1,34 @@
-export type ExperienceItem = {
+export type ServiceItem = {
   title: string;
-  organization: string;
-  period: string;
   description: string;
+  examples: string[];
+  icon: "game" | "system" | "tools";
 };
 
-export const experienceItems: ExperienceItem[] = [
- {
-  title: "Roblox Game Development",
-  organization: "Full Game Development",
-  period: "",
-  description:
-    "Developing complete Roblox games across multiple genres, including simulators, puzzle games, obbies, platformers, and other custom experiences from concept to release.",
-},
-{
-  title: "Custom Systems & Architecture",
-  organization: "Programming & Technical Design",
-  period: "",
-  description:
-    "Building custom gameplay systems, UI, data management, and reusable frameworks using modular and class-based programming. I also provide bug fixing, optimization, refactoring, and feature implementation for existing projects.",
-},
+export const services: ServiceItem[] = [
+  {
+    title: "Complete Roblox games",
+    description:
+      "Turn a game idea into a playable experience, with the gameplay, interfaces, and supporting systems working together.",
+    examples: ["Core gameplay", "Player progression", "UI & monetization"],
+    icon: "game",
+  },
+  {
+    title: "Systems that fit your game",
+    description:
+      "Custom, modular systems built around what your project needs and designed to be straightforward to expand.",
+    examples: [
+      "Quests & rewards",
+      "Inventories & shops",
+      "Data & leaderboards",
+    ],
+    icon: "system",
+  },
+  {
+    title: "A better existing project",
+    description:
+      "Keep your game moving forward with new features, bug fixes, performance improvements, and cleaner code.",
+    examples: ["Bug fixing", "Optimization", "New features"],
+    icon: "tools",
+  },
 ];

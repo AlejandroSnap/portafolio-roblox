@@ -5,9 +5,9 @@ import { SITE_BASE_PATH } from "@/lib/constants";
 // section: projects, commissions, collabs, anything you want to show off.
 //
 // To add a new item, copy the example below and fill in your own data.
-// To pin an item at the top of the section, set `featured: true` featured
-// items show up first, in the order they appear in this file. Everything
-// else is sorted alphabetically by title automatically.
+// Set featuredRank to 1, 2, or 3 to order the selected projects.
+// The featured flag fills any remaining selected places. Every item
+// also appears in the filterable collection, in the order defined here.
 // ---------------------------------------------------------------------------
 
 // Media shown on the detail page:
@@ -20,23 +20,33 @@ export type WorkMedia =
 // The kind of work this item represents. Lets the same section host
 // projects, commissions, collabs, etc. without separate pages for each.
 export type WorkKind = "project" | "commission" | "collab" | "other";
+export type WorkCategory = "game" | "system";
+
+export const workCategoryLabels: Record<WorkCategory, string> = {
+  game: "Roblox game",
+  system: "Custom system",
+};
 
 export type WorkItem = {
   slug: string; // Used in the URL: /work/<slug>/ keep it short and unique
   title: string;
   kind: WorkKind;
+  category: WorkCategory; // What was built, independent of the commission/collab kind.
   description: string; // Short description (shown on the card)
   longDescription: string; // Long description (shown on the detail page)
   date?: string; // e.g. "March 2024". If omitted, the date is just hidden.
   technologies: string[];
-  features: string[]; // Shown as low-key tags at the bottom of the detail page
+  features: string[]; // Shown as a feature list on the project detail page.
   image: string; // Card thumbnail put the file in /public/img/work/
   media?: WorkMedia; // Media shown on the detail page
   robloxUrl?: string; // If set, shows the "View on Roblox" button
   github?: string; // If set, shows a "View source" button
-  // Featured items are pinned at the top, in the order they appear here.
-  // Everything else is sorted alphabetically by title.
+  // Fills remaining selected places after projects with an explicit rank.
   featured?: boolean;
+  role?: string;
+  scope?: string;
+  status?: string;
+  featuredRank?: number; // Lower numbers appear first in the selected work section.
 };
 
 export const workKindLabels: Record<WorkKind, string> = {
@@ -49,8 +59,13 @@ export const workKindLabels: Record<WorkKind, string> = {
 export const work: WorkItem[] = [
   {
     slug: "obby-to-outdo-your-ex",
-    title: "",
+    title: "Obby to outdo your ex",
     kind: "project",
+    category: "game",
+    role: "Core systems & UI development",
+    scope: "Progression, player menus, cosmetics, rewards, and monetization.",
+    status: "In development",
+    featuredRank: 2,
 
     description:
       "A Roblox obby where I built most of the core systems and UI from scratch.",
@@ -80,7 +95,7 @@ export const work: WorkItem[] = [
       "Completed level rewards",
     ],
 
-    image: `${SITE_BASE_PATH}/img/work/obby-to-outdo-your-ex.png`,
+    image: `${SITE_BASE_PATH}/img/work/obby-to-outdo-your-ex.webp`,
     robloxUrl: `https://www.roblox.com/games/133634702197989/Obby-para-superar-a-tu-ex`,
     featured: true,
   },
@@ -89,6 +104,10 @@ export const work: WorkItem[] = [
     slug: "find-the-number-or-explode",
     title: "Find The Number Or Explode",
     kind: "project",
+    category: "game",
+    role: "Gameplay & UI development",
+    scope: "Competitive gameplay, animated UI, cosmetics, and player progression.",
+    featuredRank: 3,
 
     description:
       "1v1 competitive game based on the number-finding challenges that blew up on TikTok.",
@@ -118,7 +137,7 @@ export const work: WorkItem[] = [
       "Interactive sound effects",
     ],
 
-    image: `${SITE_BASE_PATH}/img/work/find-the-number-or-explode.png`,
+    image: `${SITE_BASE_PATH}/img/work/find-the-number-or-explode.webp`,
     robloxUrl: `https://www.roblox.com/games/116158778712571/Find-the-Number-Or-Explode`,
     featured: true,
   },
@@ -127,6 +146,10 @@ export const work: WorkItem[] = [
     slug: "step-risk-rng",
     title: "Step Risk RNG",
     kind: "project",
+    category: "game",
+    role: "Full game development",
+    scope: "Core gameplay, progression, auras, upgrades, monetization, and admin tools.",
+    featuredRank: 1,
 
     description:
       "RNG game where walking forward gives you rewards but the further you go, the higher the death chance.",
@@ -157,7 +180,7 @@ export const work: WorkItem[] = [
       "Admin command system for game passes and rewards",
     ],
 
-    image: `${SITE_BASE_PATH}/img/work/step-risk-rng.png`,
+    image: `${SITE_BASE_PATH}/img/work/step-risk-rng.webp`,
 
     robloxUrl: `https://www.roblox.com/games/78393082925300/Step-Risk-RNG`,
 
@@ -173,6 +196,7 @@ export const work: WorkItem[] = [
     slug: "guess-the-refrain",
     title: "Guess The Refrain",
     kind: "project",
+    category: "game",
 
     description:
       "Pick the right door or get eliminated based on the door-choosing trend on Roblox.",
@@ -198,7 +222,7 @@ export const work: WorkItem[] = [
       "Replayability-focused gameplay",
     ],
 
-    image: `${SITE_BASE_PATH}/img/work/guess-the-refrain.png`,
+    image: `${SITE_BASE_PATH}/img/work/guess-the-refrain.webp`,
 
     robloxUrl: `https://www.roblox.com/games/119864785994624/Guess-The-Refrain`,
 
@@ -214,6 +238,7 @@ export const work: WorkItem[] = [
     slug: "perfect-order",
     title: "Perfect Order",
     kind: "project",
+    category: "game",
 
     description:
       "1v1 game where you race to sort numbers in order before your opponent does.",
@@ -243,7 +268,7 @@ export const work: WorkItem[] = [
       "Interactive sound effects",
     ],
 
-    image: `${SITE_BASE_PATH}/img/work/perfect-order.png`,
+    image: `${SITE_BASE_PATH}/img/work/perfect-order.webp`,
 
     media: {
       type: "youtube",
@@ -258,6 +283,7 @@ export const work: WorkItem[] = [
     slug: "quests-system",
     title: "Quests System",
     kind: "other",
+    category: "system",
     description:
       "Modular quest system you can drop into a game and customize without much effort.",
     longDescription:
@@ -273,7 +299,7 @@ export const work: WorkItem[] = [
       "Easy integration",
     ],
 
-    image: `${SITE_BASE_PATH}/img/work/quests-system.png`,
+    image: `${SITE_BASE_PATH}/img/work/quests-system.webp`,
 
     media: {
       type: "youtube",
@@ -288,6 +314,7 @@ export const work: WorkItem[] = [
     slug: "ragdoll-system-r6",
     title: "Ragdoll System R6",
     kind: "other",
+    category: "system",
     description: "Lightweight ragdoll system for R6 characters, easy to integrate.",
     longDescription:
       "A simple R6 ragdoll system. It handles the physics without being heavy or complicated, and the code is set up so you can customize the behavior for whatever mechanic you're building around it.",
@@ -302,7 +329,7 @@ export const work: WorkItem[] = [
       "Optimized for R6 characters",
     ],
 
-    image: `${SITE_BASE_PATH}/img/work/ragdoll-r6.png`,
+    image: `${SITE_BASE_PATH}/img/work/ragdoll-r6.webp`,
     media: {
       type: "youtube",
       videoId: "A9Wd6oRAoZY",
@@ -315,6 +342,7 @@ export const work: WorkItem[] = [
     slug: "leaderboard-system",
     title: "Leaderboard System",
     kind: "other",
+    category: "system",
     description: "Class-based leaderboard system, easy to set up and customize.",
     longDescription:
       "A leaderboard system built with a class-based structure so you can spin up multiple leaderboards without duplicating code. Easy to drop in, easy to customize, easy to maintain.",
@@ -334,7 +362,7 @@ export const work: WorkItem[] = [
       videoId: "rdwf0Kh5xg4",
     },
 
-    image: `${SITE_BASE_PATH}/img/work/leaderboard-system.png`,
+    image: `${SITE_BASE_PATH}/img/work/leaderboard-system.webp`,
     robloxUrl: "https://www.roblox.com/games/103844629443358/Leaderboard",
   },
 
@@ -348,7 +376,7 @@ export const work: WorkItem[] = [
 
   //   features: [],
 
-  //   image: `${SITE_BASE_PATH}/img/work/quests-system.png`,
+  //   image: `${SITE_BASE_PATH}/img/work/quests-system.webp`,
   // },
 
   // {
@@ -361,7 +389,7 @@ export const work: WorkItem[] = [
 
   //   features: [],
 
-  //   image: `${SITE_BASE_PATH}/img/work/quests-system.png`,
+  //   image: `${SITE_BASE_PATH}/img/work/quests-system.webp`,
   // },
 
   // {
@@ -374,13 +402,14 @@ export const work: WorkItem[] = [
 
   //   features: [],
 
-  //   image: `${SITE_BASE_PATH}/img/work/quests-system.png`,
+  //   image: `${SITE_BASE_PATH}/img/work/quests-system.webp`,
   // },
 
   {
     slug: "obby-features",
     title: "Obby Features",
     kind: "other",
+    category: "system",
     description: "A full obby framework with progression, UI effects, and monetization built in.",
     longDescription:
       "A ready to use obby system with automatic progress saving, checkpoints, monetization, and some UI polish. The code is modular so it's straightforward to expand or adapt for different styles of obby game.",
@@ -403,13 +432,14 @@ export const work: WorkItem[] = [
 
     robloxUrl: "https://www.roblox.com/games/101295608373599/Obby-features",
 
-    image: `${SITE_BASE_PATH}/img/work/obby-features.png`,
+    image: `${SITE_BASE_PATH}/img/work/obby-features.webp`,
   },
 
   {
     slug: "nuke-bomb",
     title: "Nuke Bomb",
     kind: "other",
+    category: "system",
     description: "A nuke event with countdown, visual effects, and map-wide destruction.",
     longDescription:
       "A nuke system you can drop into a game. It has a countdown, camera shake, visual and sound effects, and configurable settings. Simple to set up and easy to tweak.",
@@ -423,7 +453,7 @@ export const work: WorkItem[] = [
       "Configurable settings",
     ],
 
-    image: `${SITE_BASE_PATH}/img/work/nuke-bomb.png`,
+    image: `${SITE_BASE_PATH}/img/work/nuke-bomb.webp`,
     media: {
       type: "youtube",
       videoId: "6g5-cAqpcPY",

@@ -1,41 +1,71 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import styles from "./discordButton.module.css";
 
-type Props = { username: string };
+export default function DiscordButton({ username }: { username: string }) {
+  const [status, setStatus] = useState<"idle" | "copying" | "copied" | "error">(
+    "idle",
+  );
+  const timer = useRef<ReturnType<typeof setTimeout> | null>(null);
 
-export default function DiscordButton({ username }: Props) {
-  const [copied, setCopied] = useState(false);
+  useEffect(
+    () => () => {
+      if (timer.current) clearTimeout(timer.current);
+    },
+    [],
+  );
 
-  function handleClick() {
-    navigator.clipboard.writeText(username).then(() => {
-      setCopied(true);
-      setTimeout(() => setCopied(false), 2200);
-    });
+  async function copyUsername() {
+    if (timer.current) clearTimeout(timer.current);
+    setStatus("copying");
+    try {
+      await navigator.clipboard.writeText(username);
+      setStatus("copied");
+      timer.current = setTimeout(() => setStatus("idle"), 3000);
+    } catch {
+      setStatus("error");
+    }
   }
 
   return (
     <div className={styles.wrap}>
-      <button type="button" onClick={handleClick} className={styles.button}>
-        <svg
-          className={styles.icon}
-          viewBox="0 0 24 24"
-          fill="currentColor"
-          aria-hidden="true"
-        >
-          <path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028c.462-.63.874-1.295 1.226-1.994a.076.076 0 0 0-.041-.106 13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03z" />
-        </svg>
-        Discord
+      <span className={styles.label}>Discord username</span>
+      <div className={styles.row}>
         <span className={styles.username}>@{username}</span>
-      </button>
-
-      <div className={`${styles.toast} ${copied ? styles.toastVisible : ""}`}>
-        <svg viewBox="0 0 20 20" fill="currentColor" className={styles.toastIcon} aria-hidden="true">
-          <path fillRule="evenodd" d="M16.707 5.293a1 1 0 0 1 0 1.414l-8 8a1 1 0 0 1-1.414 0l-4-4a1 1 0 1 1 1.414-1.414L8 12.586l7.293-7.293a1 1 0 0 1 1.414 0z" clipRule="evenodd" />
-        </svg>
-        <span><strong>@{username}</strong> copied!</span>
+        <button
+          type="button"
+          onClick={copyUsername}
+          disabled={status === "copying"}
+          className={styles.button}
+          aria-label={`Copy Discord username ${username}`}
+        >
+          <svg
+            viewBox="0 0 20 20"
+            width="16"
+            height="16"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="1.5"
+            aria-hidden="true"
+          >
+            <rect x="7" y="7" width="10" height="10" rx="2" />
+            <path d="M12 7V5a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v5a2 2 0 0 0 2 2h2" />
+          </svg>
+          {status === "copied"
+            ? "Copied!"
+            : status === "copying"
+              ? "Copying…"
+              : "Copy"}
+        </button>
       </div>
+      <p className={styles.feedback} role="status" aria-live="polite">
+        {status === "copied"
+          ? "Username copied. See you on Discord!"
+          : status === "error"
+            ? "Couldn’t copy automatically. Select and copy the username above."
+            : "Copy my username and add me on Discord."}
+      </p>
     </div>
   );
 }

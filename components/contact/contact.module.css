@@ -1,59 +1,80 @@
 .section {
-  padding: 28px 24px 96px;
+  background: var(--accent-soft);
+  border-top: 1px solid #efdcd3;
 }
-
-.container {
-  max-width: 1200px;
-  margin: 0 auto;
-
+.layout {
   display: grid;
-  gap: 16px;
-  max-width: 700px;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 100px;
+  align-items: center;
 }
-
-.label {
-  margin: 0;
-  color: var(--accent-2);
-  font-size: 0.95rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-}
-
 .title {
-  margin: 0;
-  font-size: clamp(1.8rem, 4vw, 3rem);
-  letter-spacing: -0.04em;
+  margin: 0 0 24px;
+  font-size: clamp(3rem, 5.5vw, 5rem);
+  letter-spacing: -0.065em;
+  line-height: 1.08;
+  font-weight: 750;
 }
-
+.title span {
+  color: var(--accent);
+}
 .description {
+  max-width: 420px;
   margin: 0;
   color: var(--muted);
-  line-height: 1.8;
-  max-width: 540px;
+  font-size: 1rem;
+  line-height: 1.9;
 }
-
-.actions {
+.contactPanel {
+  padding-left: 40px;
+  border-left: 1px solid #dfc9bd;
+}
+.panelTitle {
+  font-size: 1.15rem;
+  font-weight: 750;
+  letter-spacing: -0.03em;
+  margin: 0 0 12px;
+}
+.panelCopy {
+  font-size: 1rem;
+  color: var(--muted);
+  line-height: 1.85;
+  margin-bottom: 23px;
+  max-width: 370px;
+}
+.otherLinks {
   display: flex;
-  flex-wrap: wrap;
-  gap: 12px;
-  margin-top: 8px;
+  align-items: center;
+  gap: 22px;
+  margin-top: 22px;
+  font-size: 0.77rem;
 }
-
-.button {
-  text-decoration: none;
-  padding: 13px 22px;
-  border-radius: var(--radius-md);
-  border: 1px solid var(--border-strong);
-  background: var(--bg-card);
-  color: var(--text);
-  font-weight: 700;
-  font-size: 0.93rem;
-  transition: transform 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+.otherLinks > span {
+  color: var(--muted);
 }
-
-.button:hover {
-  transform: translateY(-2px);
-  border-color: var(--accent);
-  background: var(--accent-soft);
+.otherLinks a {
+  font-weight: 750;
+  text-underline-offset: 4px;
+}
+.otherLinks a:hover {
+  color: var(--accent);
+}
+@media (max-width: 900px) {
+  .layout {
+    gap: 40px;
+  }
+  .contactPanel {
+    padding-left: 28px;
+  }
+}
+@media (max-width: 760px) {
+  .layout {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+  .contactPanel {
+    border-left: 0;
+    border-top: 1px solid #dfc9bd;
+    padding: 28px 0 0;
+  }
 }

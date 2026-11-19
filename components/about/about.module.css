@@ -1,39 +1,115 @@
 .section {
-  padding: 28px 24px 72px;
+  border-top: 1px solid var(--border);
+  background: var(--surface);
 }
-
-.container {
-  max-width: 1200px;
-  margin: 0 auto;
-
+.layout {
   display: grid;
-  gap: 16px;
+  grid-template-columns: 0.8fr 1.2fr;
+  gap: 100px;
+  align-items: center;
 }
-
-.label {
-  margin: 0;
-  color: var(--accent-2);
-  font-size: 0.95rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
+.profile {
+  max-width: 375px;
 }
-
-.title {
-  margin: 0;
-  font-size: clamp(1.8rem, 4vw, 3rem);
-  letter-spacing: -0.04em;
+.monogram {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  aspect-ratio: 1;
+  overflow: hidden;
+  background-color: #e9eeeb;
+  background-image:
+    linear-gradient(#20272407 1px, transparent 1px),
+    linear-gradient(90deg, #20272407 1px, transparent 1px);
+  background-size: 38px 38px;
+  border: 1px solid #dce4df;
+  border-radius: 12px;
 }
-
-.content {
-  display: grid;
-  gap: 16px;
-  max-width: 760px;
+.monogram > svg {
+  position: absolute;
+  top: 25px;
+  left: 25px;
+  width: 25px;
+  height: 25px;
+}
+.monogram > span:not(.profileCorner) {
+  color: var(--dark);
+  font-size: clamp(5rem, 11vw, 9rem);
+  font-weight: 800;
+  letter-spacing: -0.11em;
+  line-height: 1;
+  transform: rotate(-7deg);
+  padding-right: 20px;
+}
+.period {
+  color: var(--accent);
+}
+.profileCorner {
+  position: absolute;
+  bottom: 20px;
+  right: 24px;
+  font-size: 0.75rem;
   color: var(--muted);
-  line-height: 1.8;
-  font-size: 1.03rem;
 }
-
-.content p {
-  margin: 0;
+.profileName {
+  display: flex;
+  flex-direction: column;
+  margin-top: 19px;
+  gap: 5px;
+}
+.profileName strong {
+  font-size: 1rem;
+  letter-spacing: -0.02em;
+}
+.profileName > span {
+  color: var(--muted);
+  font-size: 0.75rem;
+}
+.copy h2 {
+  margin-bottom: 26px;
+}
+.copy > p:not(:first-child) {
+  color: var(--muted);
+  font-size: 1rem;
+  line-height: 1.9;
+  max-width: 550px;
+}
+.principles {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 9px 20px;
+  margin: 25px 0 28px;
+  padding-block: 18px;
+  border-block: 1px solid var(--border);
+}
+.principles span {
+  font-size: 0.75rem;
+  font-weight: 700;
+}
+.principles span::before {
+  content: "+";
+  margin-right: 8px;
+  color: var(--accent);
+}
+@media (max-width: 1000px) {
+  .layout {
+    gap: 50px;
+  }
+}
+@media (max-width: 760px) {
+  .layout {
+    grid-template-columns: 1fr;
+    gap: 38px;
+  }
+  .profile {
+    max-width: 290px;
+    width: 100%;
+  }
+  .monogram {
+    aspect-ratio: 1.2;
+  }
+  .monogram > span:not(.profileCorner) {
+    font-size: 6.5rem;
+  }
 }

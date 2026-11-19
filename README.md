@@ -1,36 +1,43 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# AlejandroSnap — Roblox portfolio
 
-## Getting Started
+A static portfolio built with Next.js 16, React, TypeScript, and CSS Modules. The design uses a light surface, a burnt orange accent, and real project imagery.
 
-First, run the development server:
+## Local development
 
-```bash
+```sh
+npm ci
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open http://localhost:3000/portafolio-roblox/ (the base path is required).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```sh
+npm run build
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+The production build checks TypeScript and exports the complete site to `out/`. The existing GitHub Actions workflow publishes that directory to GitHub Pages when changes reach `main`.
 
-## Learn More
+## Content and structure
 
-To learn more about Next.js, take a look at the following resources:
+- `data/work.ts`: project descriptions, previews, media, technologies, and contributions.
+- `data/experience.ts`: the three service offerings.
+- `data/navigation.ts`: section navigation.
+- `data/socials.ts` and `lib/constants.ts`: contact links, identity, origin, and deployment base path.
+- `lib/work.ts`: selected projects and contribution labels.
+- `app/globals.css`: shared colors, typography, spacing, buttons, and accessibility styles.
+- `components/`: page sections, the responsive navigation, and footer.
+- `app/work/[slug]/`: statically generated project pages with per-project metadata.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+To feature a project, set `featuredRank` to its desired position (1, 2, or 3). The `featured` flag can fill remaining places. Every project, including featured work, appears in the filterable collection. Set `category` to `game` or `system` to control its filter independently of its project/commission/collaboration `kind`. Optional `role`, `scope`, and `status` fields describe your contribution and the project's current state.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Images and media
 
-## Deploy on Vercel
+Optimized WebP previews live alongside their original PNGs in `public/img/work/`. Add optimized previews when adding projects and include the configured base path in asset URLs, following the existing entries. Keep gallery images nonempty; a project cover is used as a fallback.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Videos show the local cover first. YouTube's privacy-enhanced player is loaded only after the visitor selects Play. The Manrope variable font is self-hosted through Fontsource, so builds and visitors do not need Google Fonts.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Navigation and accessibility
+
+Section links use native anchors with the configured deployment base path. Project-to-project links use Next.js navigation. The site includes a keyboard skip link, visible focus states, a mobile navigation disclosure, reduced-motion support, and live feedback for project filters and copying the Discord username.
+
+The site has no backend or contact form. Discord usernames are copied locally; visitors send their messages in Discord.

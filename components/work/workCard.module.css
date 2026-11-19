@@ -1,120 +1,95 @@
 .card {
   display: flex;
   flex-direction: column;
-  border-radius: var(--radius-md);
-  overflow: hidden;
-  background: var(--bg-soft);
-  border: 1px solid var(--border);
-  text-decoration: none;
+  min-width: 0;
   color: inherit;
-  cursor: pointer;
-  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+  text-decoration: none;
 }
-
-.card:hover {
-  transform: translateY(-4px);
-  box-shadow: var(--shadow);
-  border-color: var(--border-strong);
-}
-
-/* Image */
 .imageWrap {
   position: relative;
-  width: 100%;
   aspect-ratio: 16 / 9;
+  background: var(--dark);
+  border-radius: 10px;
   overflow: hidden;
-  background: #0a0e18;
+  isolation: isolate;
 }
-
 .image {
-  width: 100%;
-  height: 100%;
   object-fit: cover;
-  display: block;
-  transition: transform 0.28s ease;
+  transition: transform 0.4s;
 }
-
 .card:hover .image {
-  transform: scale(1.05);
+  transform: scale(1.035);
 }
-
-.featuredBadge {
+.category {
   position: absolute;
-  top: 10px;
-  left: 10px;
-  z-index: 2;
-  padding: 5px 11px;
-  border-radius: 999px;
-  font-size: 0.72rem;
-  font-weight: 700;
-  letter-spacing: 0.03em;
-  color: #06140f;
-  background: var(--accent-2);
-}
-
-.hoverOverlay {
-  position: absolute;
-  inset: 0;
-  background: rgba(7, 9, 16, 0.55);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  opacity: 0;
-  transition: opacity 0.2s ease;
-}
-
-.card:hover .hoverOverlay {
-  opacity: 1;
-}
-
-.hoverLabel {
-  background: var(--accent-soft);
-  border: 1px solid var(--accent);
+  top: 14px;
+  left: 14px;
+  padding: 6px 10px;
+  border-radius: 4px;
+  background: #ffffffed;
   color: var(--text);
-  font-size: 0.88rem;
-  font-weight: 700;
-  padding: 8px 16px;
-  border-radius: 999px;
-  letter-spacing: 0.01em;
-}
-
-/* Info block */
-.info {
-  padding: 14px 16px 16px;
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-  background: var(--bg-card);
-  border-top: 1px solid var(--border);
-}
-
-.meta {
-  margin: 0;
   font-size: 0.75rem;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.07em;
-  color: var(--accent-2);
+  line-height: 1.4;
+  font-weight: 750;
 }
-
-.title {
-  margin: 0;
-  font-size: 1rem;
+.info {
+  padding-block: 19px 8px;
+}
+.role {
+  margin: 0 0 8px;
+  font-size: 0.75rem;
   font-weight: 700;
-  color: var(--text);
-  line-height: 1.25;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
+  color: var(--accent);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
 }
-
+.title {
+  margin: 0 0 9px;
+  font-size: 1.35rem;
+  line-height: 1.25;
+  letter-spacing: -0.04em;
+  font-weight: 750;
+  text-wrap: balance;
+}
 .description {
   margin: 0;
-  font-size: 0.82rem;
   color: var(--muted);
-  line-height: 1.5;
-  display: -webkit-box;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
+  font-size: 1rem;
+  line-height: 1.75;
+}
+.view {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 17px;
+  margin-top: 20px;
+  border-top: 1px solid var(--border);
+  font-size: 0.78rem;
+  font-weight: 750;
+}
+.viewMark {
+  font-size: 1.4rem;
+  font-weight: 400;
+  line-height: 1;
+  color: var(--accent);
+}
+.card:hover .view {
+  color: var(--accent);
+}
+.prominent .imageWrap {
+  aspect-ratio: 1.5;
+}
+.prominent .title {
+  font-size: 2rem;
+}
+.prominent .description {
+  max-width: 500px;
+}
+@media (max-width: 760px) {
+  .prominent .imageWrap {
+    aspect-ratio: 1.5;
+  }
+  .prominent .title {
+    font-size: 1.75rem;
+  }
 }
